@@ -1,0 +1,118 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+<!-- Greetings -->
+<category> <pattern> HELLO </pattern>
+  <template>Hello! What's up <get name="username"/>?</template> </category>
+
+<category> <pattern> HEY</pattern>
+  <template>Hey! What's good <get name="username"/>?</template> </category>
+
+
+<category> <pattern> HI</pattern>
+  <template><srai>HELLO <get name="username"/></srai></template> </category>
+
+<category> <pattern> HELLO *</pattern>
+  <template>Hello! What's up <get name="username"/>?</template> </category>
+
+<category> <pattern> HEY *</pattern>
+  <template>Hey! What's good <get name="username"/>?</template> </category>
+
+
+<category> <pattern> HI *</pattern>
+  <template><srai>HELLO <get name="username"/></srai></template> </category>
+
+<category> <pattern> MY NAME IS * </pattern>
+	<template>
+	HELLO<think><set name="username"><star/></set></think>
+	<get name="username"/>
+	</template> </category>
+
+<category> <pattern> WHO ARE YOU </pattern>
+  <template>I am footy, a bot that gives information on footballers and their statistics from the year 2021.</template> </category>
+
+<category> <pattern> HOW ARE YOU </pattern>
+  <template>I'm alright <get name="username"/>, functioning within normal parameters, thanks for asking.</template></category>
+
+<category><pattern> I AM FINE </pattern>
+  <template>That's great. What would you like to discuss about?</template></category>
+
+<category><pattern> BYE </pattern>
+  <template>#0$Bye <get name = "username"/>! Nice talking to you. You take care now.</template></category>
+
+<category><pattern> GOODBYE </pattern>
+  <template><srai>BYE</srai></template></category>
+
+<category><pattern> EXIT </pattern>
+  <template><srai>BYE <get name="username"/></srai></template></category>
+
+<category> <pattern> THANKS </pattern>
+  <template>You are welcome <get name="username"/></template></category>
+
+<category> <pattern> THANK YOU </pattern>
+  <template><srai>THANKS <get name="username"/></srai></template></category>
+
+<category> <pattern> CHEERS </pattern>
+  <template>Sure <get name="username"/>, any time.</template></category>
+
+<category> <pattern> CHEERS * </pattern>
+  <template>Sure mate.</template></category>
+
+<!--- Wikipedia API -->
+<category><pattern> WHAT IS A * </pattern>
+  <template>#1$<star index="1"/></template></category>
+
+<category><pattern> WHAT IS AN * </pattern>
+  <template><srai>WHAT IS A <star/></srai></template></category>
+
+<category><pattern> WHAT IS * </pattern>
+  <template><srai>WHAT IS A <star/></srai></template></category>
+
+<category><pattern> DEFINE * </pattern>
+  <template><srai>WHAT IS A <star/></srai></template></category>
+
+<category><pattern> WHO IS * </pattern>
+  <template><srai>WHAT IS A <star/></srai></template></category>
+
+
+<!-- Default reaction -->
+<category><pattern> * </pattern>
+  <template>#99$<star index="1"/></template></category>
+
+<!--- Translator API -->
+<category><pattern>TRANSLATE TO *</pattern>
+  <template>
+    #3$<think>TO <set name="translateTo"><star/></set></think></template></category>
+
+
+  <category> <pattern>*</pattern>
+	<template>
+	<think><set name="response"><star/></set></think>
+	<get name="response"/>
+	</template> </category>
+
+
+
+<!--- Football Conversation -->
+<category> <pattern> TEAM STATS FOR * </pattern>
+<template>#4$
+<think><set name="teamName"><star/></set></think>
+<get name="teamName"/>
+</template> </category>
+
+
+<!-- Weather API -->
+<category><pattern> WHAT IS THE WEATHER LIKE IN * </pattern>
+  <template>#5$<star/></template></category>
+
+<category><pattern> HOW IS THE WEATHER IN * </pattern>
+  <template><srai>WHAT IS THE WEATHER LIKE IN <star/></srai></template></category>
+
+<!-- NLTK Logic input -->
+<category><pattern> I KNOW THAT * IS IN *</pattern>
+  <template>#6$<star index="1"/> is in <star index="2"/></template></category>
+
+<category><pattern> CHECK THAT * IS IN *</pattern>
+  <template>#7$<star index="1"/> is in <star index="2"/></template></category>
+
+
+</aiml>
